@@ -1,36 +1,28 @@
 #include <iostream>
-#include <string>
 using namespace std;
 
-// Default argument: level = 1
-void logMsg(const string &msg, int level = 1)
-{
-    const string tag[] = {"", "INFO", "WARN", "ERROR"};
+int power(int base, int exp = 2) {
+    int result = 1;
 
-    cout << "[" << tag[level] << "] " << msg << endl;
+    for (int i = 1; i <= exp; i++) {
+        result = result * base;
+    }
+
+    return result;
 }
 
-// Default argument: rate = 7.5
-double interest(double principal, double years, double rate = 7.5)
-{
-    return principal * rate * years / 100.0;
-}
+int main() {
+    int base, exp;
 
-int main()
-{
-    // Default level = 1 is used
-    logMsg("System started");
+    cout << "Enter base: ";
+    cin >> base;
 
-    // level = 2 is provided by the caller
-    logMsg("Low memory", 2);
+    cout << "Power with default exponent = " << power(base) << endl;
 
-    // Default rate = 7.5 is used
-    cout << "Interest = "
-         << interest(10000, 2) << endl;
+    cout << "\nEnter base and exponent: ";
+    cin >> base >> exp;
 
-    // Custom rate = 9.0 is provided
-    cout << "Interest = "
-         << interest(10000, 2, 9.0) << endl;
+    cout << "Power = " << power(base, exp) << endl;
 
     return 0;
 }
